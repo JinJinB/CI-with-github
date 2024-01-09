@@ -1,13 +1,14 @@
 # Dockerfile to build a flask app
 
-FROM node:18
+FROM python:3.8-slim
 
 WORKDIR /usr/app
 
-RUN pip install -r requirements.txt
+COPY . /usr/app/
 
-WORKDIR /usr/app/my-app
+RUN pip install --no-cache-dir -r requirements.txt
 
-EXPOSE 3000
+EXPOSE 5000
 
 CMD ["python", "app.py"]
+
